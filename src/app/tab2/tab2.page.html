@@ -10,18 +10,28 @@
   <!-- Inputs with labels -->
   <ion-item>
     <ion-label position="floating">Nome</ion-label>
-    <ion-input [(ngModel)]="cliente.nome"></ion-input>
+    <ion-input [(ngModel)]="cliente.nome" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">E-mail</ion-label>
-    <ion-input [(ngModel)]="cliente.email"></ion-input>
+    <ion-input [(ngModel)]="cliente.email" type="email" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Senha</ion-label>
-    <ion-input [(ngModel)]="cliente.pws"></ion-input>
+    <ion-input [(ngModel)]="cliente.pws" type="password" required></ion-input>
   </ion-item>
 
-  <ion-button (click)="addCliente(cliente)">Salvar</ion-button>
+  <ion-item>
+    <ion-label position="floating">Confirmar Senha</ion-label>
+    <ion-input [(ngModel)]="confPws" type="password"  required></ion-input>
+  </ion-item>
+
+
+    <ion-button (click)="presentAlert()" (click)="addCliente(cliente)" [disabled]
+    ="!cliente.nome || !cliente.email || !cliente.pws ||
+     !confPws" >Salvar</ion-button>
+  
+     
 </ion-content>
