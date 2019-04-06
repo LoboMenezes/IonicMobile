@@ -1,58 +1,37 @@
-import { Cliente } from './../cliente/cliente.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Produto } from '../produto/produto';
 import { AlertController } from '@ionic/angular';
-import { ClienteService } from '../cliente/cliente.service';
+import { Router } from '@angular/router';
+import { TabsPage } from '../tabs/tabs.page';
+import { ProdutoService } from '../produto/produto.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
+export class Tab2Page implements OnInit{
 
-export class Tab2Page {
-  cliente: Cliente;
-  clientes: Cliente[] = [];
-  confPws: string = "";
+produto: Produto;
+quant: number;
 
-  constructor(
-    private clienteService:ClienteService,
-    public alertController: AlertController
+
+
+  constructor (
+    public alertController: AlertController,
+    private produtoService: ProdutoService,
+    private router: Router,
+    private tabs:TabsPage
   ) {
-    
-    this.cliente = new Cliente;
+
   }
 
-  addCliente(cliente: Cliente) {
-    try{ 
-      this.cliente.validar(this.confPws);
-    
 
-    //this.clientes.push(cliente);
-    this.clienteService.addCliente(cliente);
-    this.cliente = new Cliente;
-    this.confPws = "";
-    
-    this.presentAlert("Aviso","Ta dentro","Succes"); 
-
-    
-  } catch (erros){
-      this.presentAlert("Erro",erros,"Danger");
-    }
-  } 
-
-  async presentAlert(tipo:string,texto:string,cor:string) {
-    const alert = await this.alertController.create({
-      header: texto,
-      //subHeader: 'Subtitle',
-      message: texto,
-      cssClass:cor,
-      buttons: ['OK']
-    });
-
-    await alert.present();
+  ngOnInit(): void {
+    this.produto = new Produto;
   }
 
-  
+
+
 
 }
-

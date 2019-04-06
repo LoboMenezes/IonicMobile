@@ -1,0 +1,8 @@
+criar projeto no ionic = ionic start
+
+
+ng -g class nome classe
+
+ng -g service produto/produto
+
+ionic g = aparece opções de criação

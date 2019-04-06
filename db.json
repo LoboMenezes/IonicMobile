@@ -1,0 +1,21 @@
+{
+  "produtos": [
+    {
+      "ativo": true,
+      "nome": "blusa",
+      "descricao": "blusa",
+      "quant": "3",
+      "valor": 35,
+      "id": 1
+    },
+   
+    {
+      "ativo": true,
+      "nome": "short",
+      "descricao": "short",
+      "quant": "5",
+      "valor": "50",
+      "id": 1
+    }
+  ]
+}
