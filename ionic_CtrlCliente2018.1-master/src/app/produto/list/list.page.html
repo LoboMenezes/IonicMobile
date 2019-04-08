@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Lista de Clientes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="clientes$ | async as clientes">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item-sliding *ngFor="let c of clientes">
+    <ion-item-options side="end">
+      <ion-item-option color="danger" expandable (click)="remover(c)">
+        Remover
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-label>{{ c.nome }}</ion-label>
+      <ion-text>{{ c.email }}</ion-text>
+    </ion-item>
+
+    <ion-item-options side="start">
+      <ion-item-option color="tertiary" expandable (click)="atualizar(c)">
+        Atualizar
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-content>
